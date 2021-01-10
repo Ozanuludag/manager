@@ -5,7 +5,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
 const CardSection = (props) => {
-  return <View style={styles.containerStyle}>{props.children}</View>;
+  return <View style={[styles.containerStyle, props.style]}>{props.children}</View>;
 };
 
 const styles = StyleSheet.create({
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flexDirection: 'row',
     borderColor: '#ddd',
-    position: 'relative',
+    //position: 'relative',
+    
   },
 });
 

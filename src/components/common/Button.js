@@ -2,12 +2,21 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 const Button = ({onPress, children}) => {
+  
   return (
-    <TouchableOpacity onPress={onPress} style={styles.buttonStyle}>
+    <TouchableOpacity onPress={onPress} style={styles.activeButtonStyle}>
       <Text style={styles.textStyle}>{children}</Text>
     </TouchableOpacity>
   );
-};
+};/*
+const Button = ({onPress, children,disable}) => {
+  console.log(disable);
+  return (
+    <TouchableOpacity disabled={disable} onPress={onPress} style={disable == true ? styles.deactiveButtonStyle : styles.activeButtonStyle}>
+      <Text style={styles.textStyle}>{children}</Text>
+    </TouchableOpacity>
+  );
+};*/
 
 const styles = StyleSheet.create({
   textStyle: {
@@ -18,7 +27,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
   },
-  buttonStyle: {
+  activeButtonStyle: {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#fff',
@@ -28,6 +37,16 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
   },
+  deactiveButtonStyle:{
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#b7b7a4',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#b7b7a4',
+    marginLeft: 5,
+    marginRight: 5,
+  }
 });
 
 export {Button};
