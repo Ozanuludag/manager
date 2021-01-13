@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Card, CardSection, Input, Button} from './common';
 import {useSelector, useDispatch} from 'react-redux';
-import {employeeUpdate} from '../actions/EmployeeActions';
+import {employeeUpdate, employeeCreate} from '../actions/EmployeeActions';
 import {Picker} from '@react-native-picker/picker';
 
 const EmployeeCreate = () => {
@@ -13,7 +13,9 @@ const EmployeeCreate = () => {
   //console.log('name: ' + name);
   //console.log('phone: ' + phone);
   console.log('shift: ' + shift);
-
+  const onButtonPress = () => {
+    dispatch(employeeCreate({name, phone, shift}));
+  }
   return (
     <Card>
       <CardSection>
@@ -56,7 +58,7 @@ const EmployeeCreate = () => {
       </CardSection>
 
       <CardSection>
-        <Button>Create</Button>
+        <Button onPress={() => onButtonPress()}>Create</Button>
       </CardSection>
     </Card>
   );
