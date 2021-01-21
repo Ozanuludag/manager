@@ -33,16 +33,24 @@ export const employeesFetch = () => {
       .ref(`/users/${currentUser.uid}/emplooyes`)
       .once('value')
       .then((snapshot) => {
-        var emplooyes = [];
+        var employees = [];
         snapshot.forEach((child) => {
-          emplooyes.push({
+          employees.push({
             key: child.key,
             name: child.val().name,
             phone: child.val().phone,
             shift: child.val().shift,
           });
         }),
-          dispatch({type: EMPLOYEES_FETCH, payload: emplooyes});
+          dispatch({type: EMPLOYEES_FETCH, payload: employees});
+      
       });
   };
 };
+/*
+export const fetchSuccess = () => {
+  return{
+    type: 'FETCH_SUCCESS'
+  }
+}
+*/
