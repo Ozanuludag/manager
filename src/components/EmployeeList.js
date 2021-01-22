@@ -7,15 +7,13 @@ import {Actions} from 'react-native-router-flux';
 
 const EmployeeList = () => {
   const dispatch = useDispatch();
-  const [newEmployees, setEmployees] = useState();
   const {employees, loading} = useSelector((state) => state.employees);
 
   useEffect(() => {
     dispatch(employeesFetch());
-    setEmployees(employees);
-  }, [newEmployees]);
-
-  //console.log('Data burda' + JSON.stringify(state));
+    console.log("Liste logu çalıştı.");
+  }, []);
+ 
   if (loading) {
     return <Spinner size="large" />;
   }
@@ -23,10 +21,10 @@ const EmployeeList = () => {
   return (
     <View>
       <FlatList
-        data={newEmployees}
+        data={employees}
         renderItem={({item, index}) => {
           return (
-            <TouchableOpacity onPress={() => Actions.employeeEdit({employee: item})}>
+            <TouchableOpacity onPress={() => Actions.employeeEdit({item})}>
               <Card>
                 <CardSection>
                   <Text>{item.name}</Text>

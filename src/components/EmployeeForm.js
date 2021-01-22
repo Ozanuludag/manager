@@ -5,9 +5,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import {employeeUpdate, employeeCreate} from '../actions/EmployeeActions';
 import {Picker} from '@react-native-picker/picker';
 
-const EmployeeForm = ({name, phone, shift}) => {
+const EmployeeForm = () => {
   const dispatch = useDispatch();
-
+  const {name, phone, shift} = useSelector(
+    (state = null) => state.employeeForm,
+  );
   return (
     <Card>
       <CardSection>
@@ -39,17 +41,15 @@ const EmployeeForm = ({name, phone, shift}) => {
           onValueChange={(day) =>
             dispatch(employeeUpdate({prop: 'shift', value: day}))
           }>
-          <Picker.Item label="Monday" value="Monday" />
-          <Picker.Item label="Tuesday" value="Tuesday" />
-          <Picker.Item label="Wednesday" value="Wednesday" />
-          <Picker.Item label="Thursday" value="Thursday" />
-          <Picker.Item label="Friday" value="Friday" />
-          <Picker.Item label="Saturday" value="Saturday" />
-          <Picker.Item label="Sunday" value="Sunday" />
+          <Picker.Item label="Pazartesi" value="Pazartesi" />
+          <Picker.Item label="Salı" value="Salı" />
+          <Picker.Item label="Çarşamba" value="Çarşamba" />
+          <Picker.Item label="Perşembe" value="Perşembe" />
+          <Picker.Item label="Cuma" value="Cuma" />
+          <Picker.Item label="Cumartesi" value="Cumartesi" />
+          <Picker.Item label="Pazar" value="Pazar" />
         </Picker>
       </CardSection>
-
-     
     </Card>
   );
 };

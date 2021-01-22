@@ -8,6 +8,8 @@ target 'manager' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'react-native-sms', :path => '../node_modules/react-native-sms'
+
   target 'managerTests' do
     inherit! :complete
     # Pods for testing

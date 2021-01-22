@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Card, CardSection, Input, Button} from './common';
+import React, {useEffect} from 'react';
+import {StyleSheet} from 'react-native';
+import {Card, CardSection, Button} from './common';
 import {useSelector, useDispatch} from 'react-redux';
-import {employeeUpdate, employeeCreate} from '../actions/EmployeeActions';
-import {Picker} from '@react-native-picker/picker';
+import {
+  employeeCreate,
+  employeeReset,
+  employeeUpdate,
+} from '../actions/EmployeeActions';
 import EmployeeForm from './EmployeeForm';
 
 const EmployeeCreate = () => {
@@ -11,13 +14,17 @@ const EmployeeCreate = () => {
   const {name, phone, shift} = useSelector(
     (state = null) => state.employeeForm,
   );
+  useEffect(() => {
+    dispatch(employeeReset());
+    console.log('create log çalıştı');
+  }, []);
 
   const onButtonPress = () => {
     dispatch(employeeCreate({name, phone, shift}));
   };
   return (
     <Card>
-      <EmployeeForm name={name} phone={phone} shift={shift} />
+      <EmployeeForm />
       <CardSection>
         <Button onPress={() => onButtonPress()}>Create</Button>
       </CardSection>
